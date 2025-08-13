@@ -24,4 +24,5 @@ have an app that
 
 ## Design
 
-Refer the svg files in wireframes/
+Refer the svg files in wireframes/, or sql schema in sql/
+
