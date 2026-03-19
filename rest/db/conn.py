@@ -1,11 +1,11 @@
 
 from peewee import SqliteDatabase
 from db.models import DB
-import os
+import os, time
 
 def connect_sqlitedb(db_cfg):
     try:
-        name = f"{db_cfg['name']}.{db_cfg['ext']}"
+        name = f"{db_cfg['name']}_{int(time.time())}.{db_cfg['ext']}"
         location = f"{db_cfg['location']}"
         if not os.stat(location):
             os.makedirs(location, exist_ok=True)

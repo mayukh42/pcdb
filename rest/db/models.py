@@ -9,12 +9,14 @@ from peewee import (
 
 DB = DatabaseProxy()
 
+playtime_fields = ['#', 'title', 'hours', 'last played', 'gpu', 'gpad', 'remarks']
+
 class BaseModel(Model):
     class Meta:
         database = DB
 
-class GameStat(BaseModel):
-    id = AutoField(primary_key=True)
+class Playtime(BaseModel):
+    build = IntegerField()
     title = CharField()
     hours = FloatField()
     gpu = CharField()
