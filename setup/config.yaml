@@ -1,0 +1,5 @@
+# config for pcdb
+
+db:
+  name: "pcdb-sqlite"
+  location: "out"
