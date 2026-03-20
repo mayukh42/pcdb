@@ -13,10 +13,10 @@ def get_parser():
     )
 
     parser.add_argument(
-        '--droplines',
+        '--skiplines',
         type=int,
         default=0,
-        help="number of lines in csv to drop"
+        help="number of lines in csv to skip"
     )
 
     parser.add_argument(
