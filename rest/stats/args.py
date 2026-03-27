@@ -13,10 +13,10 @@ def get_parser():
     )
 
     parser.add_argument(
-        '--skiplines',
-        type=int,
-        default=0,
-        help="number of lines in csv to skip"
+        '--lines',
+        type=str,
+        default="",
+        help="range of lines start-end (start inclusive, end exclusive) in csv to process."
     )
 
     parser.add_argument(
