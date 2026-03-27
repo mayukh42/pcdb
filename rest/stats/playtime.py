@@ -1,7 +1,7 @@
 
 from config import config
 from rest.db.models import (
-    playtime_fields,
+    PLAYTIME_FIELDS,
     Playtime
 )
 from args import get_parser
@@ -20,7 +20,7 @@ if __name__ == '__main__':
         args.csv, 
         line_range[0],
         line_range[1], 
-        playtime_fields, 
+        PLAYTIME_FIELDS, 
         ['#'],
         {"build": args.build}, 
         lambda x: x['title'] == ''

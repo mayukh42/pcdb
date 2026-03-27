@@ -1,7 +1,9 @@
 
 import yaml
 
-def get_config(file):
+DEFAULT_CFG_LOCATION = "./test/resources/config.yaml"
+
+def get_config(file=DEFAULT_CFG_LOCATION):
     try:
         with open(file, 'r') as f:
             cfg = yaml.full_load(f)

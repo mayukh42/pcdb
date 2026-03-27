@@ -1,16 +1,19 @@
 
 from peewee import SqliteDatabase
-from db.models import DB
+from rest.db.models import DB
 import os, time
 
-def connect_sqlitedb(db_cfg):
+def connect_sqlitedb(db_cfg, existing=None):
     try:
         name = f"{db_cfg['name']}_{int(time.time())}.{db_cfg['ext']}"
         location = f"{db_cfg['location']}"
         if not os.stat(location):
             os.makedirs(location, exist_ok=True)
 
-        full_path = os.path.join(location, name)
+        if not existing:
+            full_path = os.path.join(location, name)
+        else:
+            full_path = os.path.join(location, existing)
         db = SqliteDatabase(full_path, pragmas={
             'journal_mode': db_cfg['journal_mode'],
             'cache_size': -1000 * db_cfg['cache_size_MB'],

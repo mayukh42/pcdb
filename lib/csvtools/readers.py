@@ -11,21 +11,21 @@ class CsvReader():
     fields: []
     drop_fields: []
     add_fields: {}
-    skip_condition: Callable
+    skip_fn: Callable
 
     ''' read_csv(rdr)
         Reads a csv with custom options like
             line_start, line_end (int): use only lines (including header) between start (inclusive) and end (exclusive)
             projection ([]str): select a subset of fields in output
             custom_fields: ({str: object}): add more custom fields provided as (k, v) dict
-            skip_condition: a boolean function
+            skip_fn: a predicate function to skip a row if it returns true
 
         This function gives more control to the caller rather than depending on csv lib for the content
     '''
     def read(self) -> []:
         def process_row(row):
             filtered = {}
-            if self.skip_condition and self.skip_condition(row):
+            if self.skip_fn and self.skip_fn(row):
                 return filtered
 
             for field in self.fields:
